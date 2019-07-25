@@ -6,7 +6,6 @@ namespace Microsoft.XpsConverter
 {
     internal class XpsConverterApp
 	{
-
         private static XpsType _convertFrom = XpsType.OpenXPS;
         private static XpsType _convertTo = XpsType.MSXPS;
 
