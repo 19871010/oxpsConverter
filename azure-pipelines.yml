@@ -52,3 +52,15 @@ steps:
     target: '$(Build.SourceVersion)'
     tagSource: 'auto'
     assets: '$(build.artifactstagingdirectory)/*'
+
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo $(solution)
+      echo $(buildPlatform)
+      echo $(buildConfiguration)
+      echo $(build.artifactstagingdirectory)
+      echo $(system.defaultworkingdirectory)
+      echo $(build.artifactstagingdirectory)
+      echo **\bin\$(BuildConfiguration)\**
