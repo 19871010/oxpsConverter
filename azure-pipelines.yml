@@ -32,17 +32,17 @@ steps:
 #    platform: '$(buildPlatform)'
 #    configuration: '$(buildConfiguration)'
 
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '**\bin\$(BuildConfiguration)\**'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+#- task: CopyFiles@2
+#  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+#  inputs:
+#    SourceFolder: '$(system.defaultworkingdirectory)'
+#    Contents: '**\bin\$(BuildConfiguration)\**'
+#    TargetFolder: '$(build.artifactstagingdirectory)'
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+#- task: PublishBuildArtifacts@1
+#  displayName: 'Publish Artifact: drop'
+#  inputs:
+#    PathtoPublish: '$(build.artifactstagingdirectory)'
 
 - task: GitHubRelease@0
   inputs:
@@ -51,4 +51,4 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'auto'
-    assets: '$(build.artifactstagingdirectory)\bin\$(BuildConfiguration)\*'
+#    assets: '$(system.defaultworkingdirectory)\bin\$(BuildConfiguration)\*'
