@@ -36,8 +36,10 @@ steps:
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '**\bin\$(BuildConfiguration)\**'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    #Contents: '**\bin\$(BuildConfiguration)\**'
+    Contents: '**\bin\$(BuildConfiguration)\**\?(*.exe|*.dll)'
+    #TargetFolder: '$(build.artifactstagingdirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 #- task: PublishBuildArtifacts@1
 #  displayName: 'Publish Artifact: drop'
@@ -51,19 +53,12 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'auto'
-    assets: '$(system.defaultworkingdirectory)/bin/$(BuildConfiguration)/'
+    assets: '**$(system.defaultworkingdirectory)\bin\$(BuildConfiguration)\**'
 
 
 - task: CmdLine@2
   inputs:
     script: |
-      echo $(system.defaultworkingdirectory)/bin/$(BuildConfiguration)/
-      echo $(system.defaultworkingdirectory)/bin/$(BuildConfiguration)/*
-      echo $(system.defaultworkingdirectory)/bin/$(BuildConfiguration)/**
-      echo $(system.defaultworkingdirectory)\bin\$(BuildConfiguration)\
-      echo $(system.defaultworkingdirectory)\bin\$(BuildConfiguration)\*
-      echo $(system.defaultworkingdirectory)\bin\$(BuildConfiguration)\**
-      echo $(build.artifactstagingdirectory)\bin\$(BuildConfiguration)
-      echo $(build.artifactstagingdirectory)\bin\$(BuildConfiguration)\*
-      echo $(build.artifactstagingdirectory)\bin\$(BuildConfiguration)\**
+      echo $(Build.ArtifactStagingDirectory)
+      echo $(Build.SourceVersion)
 
