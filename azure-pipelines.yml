@@ -57,10 +57,13 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo $(solution)
-      echo $(buildPlatform)
-      echo $(buildConfiguration)
-      echo $(build.artifactstagingdirectory)
-      echo $(system.defaultworkingdirectory)
-      echo $(build.artifactstagingdirectory)
-      echo **\bin\$(BuildConfiguration)\**
+      echo $(system.defaultworkingdirectory)/bin/$(BuildConfiguration)/
+      echo $(system.defaultworkingdirectory)/bin/$(BuildConfiguration)/*
+      echo $(system.defaultworkingdirectory)/bin/$(BuildConfiguration)/**
+      echo $(system.defaultworkingdirectory)\bin\$(BuildConfiguration)\
+      echo $(system.defaultworkingdirectory)\bin\$(BuildConfiguration)\*
+      echo $(system.defaultworkingdirectory)\bin\$(BuildConfiguration)\**
+      echo $(build.artifactstagingdirectory)\bin\$(BuildConfiguration)
+      echo $(build.artifactstagingdirectory)\bin\$(BuildConfiguration)\*
+      echo $(build.artifactstagingdirectory)\bin\$(BuildConfiguration)\**
+
