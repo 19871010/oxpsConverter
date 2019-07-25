@@ -44,3 +44,10 @@ steps:
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
 
+- task: GitHubRelease@0
+  inputs:
+    gitHubConnection: 'Github'
+    repositoryName: '19871010/oxpsConvert'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'auto'
